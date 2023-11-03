@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Project;
+
+use App\Http\Controllers\Api\ProjectController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +17,7 @@ use App\Models\Project;
 |
 */
 
-Route::get("/projects", function () {
-    $projects = Project::paginate(10);
+// Route::get("/projects", [ProjectController::class,"index"]);
 
-    return response()->json([
-        "projects"=> $projects,
-    ]);
+Route::apiResource("projects", ProjectController::class);
 
-
-    // altro modo per fare la rotta API 
-
-    // return response()->json($projects);
-});
