@@ -16,7 +16,7 @@ use App\Models\Project;
 */
 
 Route::get("/projects", function () {
-    $projects = Project::all();
+    $projects = Project::paginate(10);
 
     return response()->json([
         "projects"=> $projects,
@@ -24,6 +24,6 @@ Route::get("/projects", function () {
 
 
     // altro modo per fare la rotta API 
-    
+
     // return response()->json($projects);
 });
